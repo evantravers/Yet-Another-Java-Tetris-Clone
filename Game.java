@@ -1,12 +1,26 @@
 class Game implements Runnable {
+	private Board matrix;
+	private Thread t;
+	
 	public Game() {
 		// needs a board
 		Board matrix = new Board();
+		t = new Thread();
 	}
 	
 	public void run() {
 		while (true) {
-			System.out.println("playing a game, kthxbai");
+			// display board
+			matrix.display();
+			// breakpoint
 		}
+	}
+	
+	public void start() {
+		if (t == null)
+    	{
+			t = new Thread(this);
+    		t.run();
+    	}
 	}
 }

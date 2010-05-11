@@ -8,6 +8,15 @@ class Board {
 	
 	public void checkRows() {
 		// looks to see if there any rows to clear
-		;
+		System.out.println("none here boss");
+	}
+	
+	public void display() {
+		for (int i=0;i<10 ;i++ ) {
+			for (int j=0;j<20 ;j++ ) {
+				System.out.print(matrix[i][j]);
+			}
+			System.out.print("\n");
+		}
 	}
 }
