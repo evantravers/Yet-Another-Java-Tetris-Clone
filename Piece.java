@@ -21,6 +21,19 @@ class Piece {
 		rotation = 0;
 	}
 	
+	public boolean rotateR() {
+		// rotate 90 right
+		return false;
+	}
+	
+	public boolean rotateL() {
+		// TODO complete rotate code
+		rotateR();
+		rotateR();
+		rotateR();
+		return false;
+	}
+	
 	private int[][] getPoints(int type) {
 		int[][] value = new int[4][4];
 		switch (type) {

@@ -18,5 +18,10 @@ class Board {
 			}
 			System.out.print("\n");
 		}
+		System.out.println("\n\n");
+	}
+	
+	public void gravity() {
+		// move bricks down
 	}
 }
