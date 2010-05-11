@@ -3,6 +3,7 @@ import java.util.Random;
 class Piece {
 	private int[][] points;
 	private int rotation; 
+	private String type;
 	
 	Random generator = new Random();
 	
@@ -29,6 +30,7 @@ class Piece {
 			value[0][1]=1;
 			value[0][2]=1;
 			value[0][3]=1;
+			this.type="I";
 			break;
 			// J
 			case 1: 
@@ -36,6 +38,7 @@ class Piece {
 			value[1][1]=1;
 			value[1][2]=1;
 			value[0][2]=1;
+			this.type="J";
 			break;
 			// L
 			case 2:
@@ -43,6 +46,7 @@ class Piece {
 			value[0][1]=1;
 			value[0][2]=1;
 			value[1][2]=1;
+			this.type="L";
 			break;
 			// square
 			case 3:
@@ -50,6 +54,7 @@ class Piece {
 			value[0][1]=1;
 			value[1][0]=1;
 			value[1][1]=1;
+			this.type="O";
 			break;
 			// S
 			case 4:
@@ -57,6 +62,7 @@ class Piece {
 			value[2][0]=1;
 			value[1][1]=1;
 			value[0][1]=1;
+			this.type="S";
 			break;
 			// T
 			case 5:
@@ -64,6 +70,7 @@ class Piece {
 			value[1][0]=1;
 			value[2][0]=1;
 			value[1][1]=1;
+			this.type="T";
 			break;
 			// Z
 			case 6:
@@ -71,6 +78,7 @@ class Piece {
 			value[1][0]=1;
 			value[1][1]=1;
 			value[2][1]=1;
+			this.type="Z";
 			break;			
 		}
 		return value;
@@ -79,7 +87,9 @@ class Piece {
 		String printString="";
 		for (int i=0;i<4 ;i++ ) {
 			for (int j=0;j<4 ;j++ ) {
-				printString+=" "+points[i][j];
+				if (points[i][j]==1) {
+					printString+=" "+this.type;
+				}
 			}
 			printString+="\n";
 		}
