@@ -11,9 +11,7 @@ class Game implements Runnable {
 			// display board
 			matrix.display();
 			
-			try 
-	        {  Thread.sleep(1000); }
-	    	catch(InterruptedException e){};
+			Thread.yield();
 			// breakpoint
 		}
 	}

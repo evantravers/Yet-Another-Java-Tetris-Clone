@@ -2,6 +2,7 @@ import java.util.Random;
 
 class Piece {
 	private int[][] points;
+	// should be 0-4
 	private int rotation; 
 	private String type;
 	

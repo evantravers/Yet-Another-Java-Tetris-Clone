@@ -1,6 +1,18 @@
 class Board {
-	private int matrix[][];
+	// for modeling/display 
 	// should be 10x20
+	private int matrix[][];
+	
+	// the current bricks X coord
+	private int activeX;
+	// Y coord
+	private int activeY;
+	
+	// these are the bricks that are already laid.
+	// bricks contain their own rotation, so that should be fine.
+	private ArrayList bricks;
+	private ArrayList coords;
+	
 	public Board() {
 		// make a new board with nothing on it.
 		matrix = new int[10][20];
@@ -22,6 +34,6 @@ class Board {
 	}
 	
 	public void gravity() {
-		// move bricks down
+		// move active brick down
 	}
 }
