@@ -4,16 +4,15 @@ class Game implements Runnable {
 	public Game() {
 		// needs a board
 		matrix = new Board();
+		// TODO gravity timer
+		// TODO input
+		// TODO scoreboard / thread that also handles lines.
 	}
 	
 	public void run() {
 		while (true) {
 			// display board
-			// matrix.display();
-			System.out.println(new Piece(4,1));
-			System.out.println(new Piece(4,2));
-			System.out.println(new Piece(4,3));
-			System.out.println(new Piece(4,4));
+			matrix.display();
 			Thread.yield();
 			// breakpoint
 		}

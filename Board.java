@@ -5,7 +5,7 @@ class Board {
 	// should be 10x20
 	
 	/*
-	0 1 2 3 4 5 6 7 8 9 10
+	 0  1  2  3  4  5  6  7  8  9  10
 	[ ][ ][ ][ ][T][ ][ ][ ][ ][ ][ ]0
 	[ ][ ][ ][T][T][T][ ][ ][ ][ ][ ]1
 	[ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]2
@@ -23,9 +23,9 @@ class Board {
 	[ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]14
 	[ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]15
 	[ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]16
-	[ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]17
-	[ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]18
-	[ ][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]19
+	[L][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]17
+	[L][ ][ ][ ][ ][ ][ ][ ][ ][ ][ ]18
+	[L][L][ ][ ][ ][ ][ ][ ][ ][ ][ ]19
 	*/
 	
 	
@@ -50,9 +50,16 @@ class Board {
 		// add the brick to the list
 		bricks.add(p);
 		// position it at the top middle of the frame
-		activeX=5;
+		activeX=2;
 		activeY=0;
-		// TODO represent it graphically
+	}
+	
+	public void add() {
+		// adds a completely random piece
+		bricks.add(new Piece());
+		// position it at the top middle of the frame
+		activeX=2;
+		activeY=0;
 	}
 	
 	public void checkRows() {
