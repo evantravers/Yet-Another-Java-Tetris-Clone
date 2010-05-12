@@ -14,25 +14,37 @@ class Piece {
 		// picks a random piece type
 		int type = generator.nextInt(7);
 		points = getPoints(type);
-		rotation = 0;
+		
+		// randomly rotates
+		rotation = generator.nextInt(3);
+		for (int i=0;i<rotation ;i++ ) {
+			rotateR();
+		}
 	}
 	
-	public Piece(int n) {
+	public Piece(int n, int rotation) {
 		points = getPoints(n);
-		rotation = 0;
+		for (int i=0;i<rotation ;i++ ) {
+			rotateR();
+		}
 	}
 	
-	public boolean rotateR() {
-		// rotate 90 right
-		return false;
+	public void rotateR() {
+		// Completed rotate 90 right
+		int[][] temp = new int[4][4];
+		for (int x=0;x<4 ;x++ ) {
+			for (int y=0;y<4 ;y++ ) {
+				temp[x][3-y]=points[y][x];
+			}
+		}
+		this.points=temp;
 	}
 	
-	public boolean rotateL() {
-		// TODO complete rotate code
+	public void rotateL() {
+		// complete rotate code
 		rotateR();
 		rotateR();
 		rotateR();
-		return false;
 	}
 	
 	private int[][] getPoints(int type) {
