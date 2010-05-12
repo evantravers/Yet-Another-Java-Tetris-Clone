@@ -12,7 +12,7 @@ class Piece {
 	// I, J, L, O, S, T, Z
 	public Piece() {
 		// picks a random piece type
-		int type = generator.nextInt(6);
+		int type = generator.nextInt(7);
 		points = getPoints(type);
 		rotation = 0;
 	}
@@ -103,6 +103,9 @@ class Piece {
 			for (int j=0;j<4 ;j++ ) {
 				if (points[i][j]==1) {
 					printString+=" "+this.type;
+				}
+				else {
+					printString+="  ";
 				}
 			}
 			printString+="\n";

@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 class Board {
 	// for modeling/display 
 	// should be 10x20

@@ -9,8 +9,8 @@ class Game implements Runnable {
 	public void run() {
 		while (true) {
 			// display board
-			matrix.display();
-			
+			//matrix.display();
+			System.out.println(new Piece());
 			Thread.yield();
 			// breakpoint
 		}
