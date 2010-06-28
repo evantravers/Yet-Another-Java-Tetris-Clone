@@ -124,4 +124,18 @@ class Piece {
 		}
 		return printString;
 	}
+	
+	public static void main(String[] args) {
+		System.out.println();
+		System.out.println("Here are the pieces:\n");
+		for (int i=0;i<7 ;i++ ) {
+			Piece tmp = new Piece(i,0);
+			System.out.println(tmp);
+		}
+		System.out.println("Testing Rotation:\n");
+		System.out.println(new Piece(2,1));
+		System.out.println(new Piece(2,2));
+		System.out.println(new Piece(2,3));
+		System.out.println(new Piece(2,4));
+	}
 }

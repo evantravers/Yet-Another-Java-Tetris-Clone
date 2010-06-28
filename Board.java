@@ -36,6 +36,8 @@ class Board {
 	// Y coord
 	private int activeY;
 	
+	private Piece active;
+	
 	// these are the bricks that are already laid.
 	// bricks contain their own rotation, so that should be fine.
 	private ArrayList bricks;
@@ -48,7 +50,7 @@ class Board {
 	
 	public void add(Piece p) {
 		// add the brick to the list
-		bricks.add(p);
+		active = p;
 		// position it at the top middle of the frame
 		activeX=2;
 		activeY=0;
@@ -63,7 +65,7 @@ class Board {
 	}
 	
 	public void checkRows() {
-		// TODOlooks to see if there any rows to clear
+		// TODO looks to see if there any rows to clear
 		System.out.println("none here boss");
 	}
 	
