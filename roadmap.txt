@@ -1,0 +1,33 @@
+Roadmap 07-02-10
+
+This project is very open. The first goal is a working OO model for the game, with relations intact. This goal ignores the actual game loop, scoring, and input for time being. Those will branched out into and explored. Part of the original goal for the project was to gain some experience in threads, and so I'd rather not implement them until each component is stable. Currently, the scheme is this:
+
+Game
+	Contains a board, will also contain instances of the control, menu and scoring structures eventually.
+
+Board
+	Knows the position of each dead piece, as well as holds the current piece. Handles all x,y coords. 
+	TODO: Collision. This is the big one right now.
+
+Piece
+	Knows only what kind it is and its orientation. This part is basically done.
+
+You should know:
+
+For this project we are going to be using git as a source control. There are two big things you should know:
+
+1) Please don't push every change you make. Save every change you make. Commit when you have a stopping point. Don't push until you have a full change made. 
+
+2) Because it's Source Control, try stuff. Wanna try and bang out a input module? Branch the source, do it, and push the branch. Nothing preventing experimentation, and it'll teach you the basics of git.
+
+Lastly, go for it. No need to ask me if you can try something. There's no deadline, and no one to impress. This is a framework for knowledge. If you break something horribly, I'll simply roll back to working state. This is about learning, and achieving something fun. There will always be a glaring problem, and if you want, you can consider it a race/coop mission to complete it. Currently, that problem is to make an elegant solution to the collision problem. But if you want to start tackling other problems, such as a menu system or graphical representation of the board and pieces, go for it. Nothing is stopping you.
+
+Links:
+
+This is the best reference to git: 
+www.gitref.org
+
+As for github.com, you'll need to follow the setup rules here:
+http://learn.github.com/p/setup.html
+
+Have fun and happy coding!
