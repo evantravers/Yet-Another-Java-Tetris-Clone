@@ -28,6 +28,13 @@ class Piece {
 			rotateR();
 		}
 	}
+
+	public Piece(Piece p) {
+
+		this.points = p.getPoints();
+		this.rotation = p.getRotation();
+		this.type = p.getType();
+	}
 	
 	public void rotateR() {
 		// Completed rotate 90 right
@@ -118,6 +125,11 @@ class Piece {
 	public String getType() {
 
 		return type;
+	}
+
+	public int getRotation() {
+
+		return rotation;
 	}
 	public String toString() {
 		String printString="";
