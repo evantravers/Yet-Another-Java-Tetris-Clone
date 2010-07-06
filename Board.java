@@ -1,5 +1,3 @@
-// TODO Merge all collision detections into one master method
-
 import java.util.ArrayList;
 
 class Board {
@@ -40,12 +38,6 @@ class Board {
 	
 	private Piece active;
 	
-	// these are the bricks that are already laid.
-	// bricks contain their own rotation, so that should be fine.
-	// TODO Answer Question: Is it necessary to keep track of dead pieces with ArrayList:bricks or does String:matrix take care of that?
-	private ArrayList<Piece> bricks;
-	private ArrayList coords;
-	
 	public Board() {
 		// make a new board with nothing on it.
 		matrix = new String[10][20];
@@ -60,9 +52,8 @@ class Board {
 	}
 	
 	public void add() {
-		// adds a completely random piece
-		bricks.add(new Piece());
 		// position it at the top middle of the frame
+		active = new Piece();
 		activeX=2;
 		activeY=0;
 	}
@@ -127,7 +118,8 @@ class Board {
 				if(pMatrix[x][y] == 1)
 				{
 					if(activeX + x + dx < 0			// Left Board Collision Detection
-					|| activeX + x + dx > matrix[y].length  // Right Board Collision Detection
+					|| activeX + x + dx >= matrix[y].length  // Right Board Collision Detection
+					|| activeY + y + dy >= matrix.length
 					|| matrix[activeX + x + dx][activeY + y + dy] != null) //Piece Collision Detection
 					{
 						collision = true;
@@ -207,10 +199,10 @@ class Board {
 	}
 
 	// TODO What's 'refresh()' supposed to do?	
-	public void refresh() {
+/*	public void refresh() {
 		for (int i=0;i<bricks.size() ;i++ ) {
 			
 		}
-	}
+	}*/
 	
 }
