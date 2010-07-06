@@ -13,7 +13,7 @@ class Piece {
 	public Piece() {
 		// picks a random piece type
 		int type = generator.nextInt(7);
-		points = getPoints(type);
+		points = setPoints(type);
 		
 		// randomly rotates
 		rotation = generator.nextInt(3);
@@ -23,7 +23,7 @@ class Piece {
 	}
 	
 	public Piece(int n, int rotation) {
-		points = getPoints(n);
+		points = setPoints(n);
 		for (int i=0;i<rotation ;i++ ) {
 			rotateR();
 		}
@@ -47,7 +47,7 @@ class Piece {
 		rotateR();
 	}
 	
-	private int[][] getPoints(int type) {
+	private int[][] setPoints(int type) {
 		int[][] value = new int[4][4];
 		switch (type) {
 			// line
@@ -108,6 +108,16 @@ class Piece {
 			break;			
 		}
 		return value;
+	}
+
+	public int[][] getPoints() {
+
+		return points;
+	}
+
+	public String getType() {
+
+		return type;
 	}
 	public String toString() {
 		String printString="";

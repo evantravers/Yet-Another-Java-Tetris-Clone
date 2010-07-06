@@ -29,7 +29,7 @@ class Board {
 	*/
 	
 	
-	private int matrix[][];
+	private String matrix[][];
 	
 	// the current bricks X coord
 	private int activeX;
@@ -40,12 +40,13 @@ class Board {
 	
 	// these are the bricks that are already laid.
 	// bricks contain their own rotation, so that should be fine.
-	private ArrayList bricks;
+	// TODO Answer Question: Is it necessary to keep track of dead pieces with ArrayList:bricks or does String:matrix take care of that?
+	private ArrayList<Piece> bricks;
 	private ArrayList coords;
 	
 	public Board() {
 		// make a new board with nothing on it.
-		matrix = new int[10][20];
+		matrix = new String[10][20];
 	}
 	
 	public void add(Piece p) {
@@ -65,20 +66,102 @@ class Board {
 	}
 	
 	public void checkRows() {
-		// TODO looks to see if there any rows to clear
-		System.out.println("none here boss");
+
+		ArrayList<Integer> rowsToClear = new ArrayList<Integer>();
+
+		for(int y = 0; y < matrix.length; y++)
+		{
+			boolean clearQ = true;
+			for(int x = 0; x < matrix[y].length; x++)
+			{
+				if(matrix[x][y] == null)
+					clearQ = false;
+			}
+			if(clearQ == true)
+				rowsToClear.add(y);
+		}
+
+		if(rowsToClear.size() != 0)
+			clearRows(rowsToClear);
+		else
+			System.out.println("none here boss");
+	}
+
+	public void clearRows(ArrayList<Integer> rows) {
+		// Clears necessary rows
+		for(int r : rows)
+		{	
+			for(int x = 0; x < matrix[r].length; x++)
+			{
+				matrix[x][r] = null;
+			}	
+		}
+		settle(rows);
+	}
+
+	public void settle(ArrayList<Integer> rows) {
+		// Settles the bricks
+		for(int r : rows)
+		{
+			for(int y = r; y > 0; y--)
+			{
+				for(int x = 0; x < matrix[y].length; x++)
+				{
+					matrix[x][y] = matrix[x][y-1];
+				}
+			}
+		}
 	}
 	
 	public void left() {
 		// moves the brick to left
 		// TODO collision
-		activeX--;
+
+		int[][] pMatrix = active.getPoints();
+		
+		boolean collision = false;
+		for(int y = 0; y < pMatrix.length; y++)
+		{
+			for(int x = 0; x < pMatrix[y].length; x++)
+			{
+				if(pMatrix[x][y] == 1)
+				{
+					if(activeX + x - 1 < 0 || matrix[activeX + x - 1][y] != null)
+						collision = true;		
+				}
+			}
+		}
+
+		if(!collision)
+			activeX--;
 	}
 	
 	public void right() {
 		// moves brick to right
 		// TODO collision
-		activeX++;
+
+		int[][] pMatrix = active.getPoints();
+
+		boolean collision = false;
+		for(int y = 0; y < pMatrix.length; y++)
+		{
+			for(int x = 0; x < pMatrix[y].length; x++)
+			{
+				if(pMatrix[x][y] == 1)
+				{
+					if(activeX + x + 1 > matrix[y].length || matrix[activeX + x + 1][y] != null)
+						collision = true;
+				}
+			}
+		}
+		if(!collision)
+			activeX++;
+	}
+
+	public void rotate() {
+
+		//TODO Collision detection
+		//active.rotate();
 	}
 	
 	public void display() {
@@ -86,7 +169,7 @@ class Board {
 		// TODO implement this graphically
 		for (int y=0;y<20 ;y++ ) {
 			for (int x=0;x<10 ;x++ ) {
-				if (matrix[x][y]==0) {
+				if (matrix[x][y]== null) {
 					output+="[ ]";
 				}
 				else {
@@ -98,7 +181,8 @@ class Board {
 		output+=("\n\n");
 		System.out.print(output);
 	}
-	
+
+	// TODO What's 'refresh()' supposed to do?	
 	public void refresh() {
 		for (int i=0;i<bricks.size() ;i++ ) {
 			
@@ -109,5 +193,36 @@ class Board {
 		// move active brick down
 		activeY++;
 		// TODO detect collision
+		// if collision == true, lock the piece
+		
+		int[][] pMatrix = active.getPoints();
+		for(int y = 0; y < pMatrix.length; y++)
+		{
+			for(int x = 0; x < pMatrix[y].length; x++)
+			{
+				if(pMatrix[x][y] == 1)
+				{
+					if(matrix[activeX + x][activeY + y] != null)
+						lockPiece();
+				}
+			}
+		}
+	}
+
+	public void lockPiece() {
+		// Locks the piece to the matrix then adds a new piece to the board
+		int[][] pMatrix = active.getPoints();
+		for(int y = 0; y < pMatrix.length; y++)
+		{
+			for(int x = 0; x < pMatrix[y].length; x++)
+			{
+				if(pMatrix[x][y] == 1)
+				{
+					matrix[activeX + x][activeY + y] = active.getType();
+				}	
+			}
+		}
+
+		this.add();
 	}
 }
