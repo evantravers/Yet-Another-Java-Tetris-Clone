@@ -1,3 +1,5 @@
+// TODO Merge all collision detections into one master method
+
 import java.util.ArrayList;
 
 class Board {
