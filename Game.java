@@ -35,7 +35,8 @@ class Game implements Runnable {
 		while (true) {
 
 			gameBoard.gravity();
-			try{ Thread.sleep(1000); }catch(InterruptedException e) { }
+			// Simulated Gravity timer for testing purposes
+			try{ Thread.sleep(250); }catch(InterruptedException e) { }
 			gui.repaint();
 			Thread.yield();
 			// breakpoint

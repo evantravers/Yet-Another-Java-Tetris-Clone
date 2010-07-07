@@ -28,20 +28,10 @@ public class Gui extends JPanel {
 		
 		g2.setColor(Color.black);
 
-		drawGrid(g2);
-		String type = gameBoard.getActivePiece().getType();
-		switch (type.charAt(0))
-		{
-			case 'I' : g2.setColor(Color.red); break;
-			case 'J' : g2.setColor(Color.magenta); break;
-			case 'L' : g2.setColor(Color.orange); break;
-			case 'Z' : g2.setColor(Color.blue); break;
-			case 'S' : g2.setColor(Color.green); break;
-			case 'O' : g2.setColor(Color.yellow); break;
-			case 'T' : g2.setColor(Color.white); break;		
-		}
 		drawActivePiece(g2);
 		drawDeadBricks(g2);
+		g2.setColor(Color.black);
+		drawGrid(g2);
 		// more?
 
 		g.dispose();
@@ -64,6 +54,7 @@ public class Gui extends JPanel {
 		int ay = gameBoard.getActiveY();
 		int[][] pMatrix = gameBoard.getActivePiece().getPoints();
 		String type = gameBoard.getActivePiece().getType();
+		typeColor(type, g);
 
 		for(int y = 0; y < pMatrix.length; y++)
 		{
@@ -86,8 +77,25 @@ public class Gui extends JPanel {
 			for(int y = 0; y < matrix[x].length; y++)
 			{	
 				if(matrix[x][y] != null)
+				{	
+					typeColor(matrix[x][y],g);
 					g.fillRect(x*bW, y*bW, bW, bW);
+				}
 			}
 		}
+	}
+
+	public void typeColor(String type, Graphics2D g) {
+
+                switch (type.charAt(0))
+                {
+                        case 'I' : g.setColor(Color.red); break;
+                        case 'J' : g.setColor(Color.magenta); break;
+                        case 'L' : g.setColor(Color.orange); break;
+                        case 'Z' : g.setColor(Color.blue); break;
+                        case 'S' : g.setColor(Color.green); break;
+                        case 'O' : g.setColor(Color.yellow); break;
+                        case 'T' : g.setColor(Color.black); break;
+                }
 	}
 }	

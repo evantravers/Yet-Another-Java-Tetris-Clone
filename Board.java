@@ -165,7 +165,7 @@ class Board {
                         activeY++;
                 else
                         lockPiece();
-        }
+       }
 
         public void lockPiece() {
                 // Locks the piece to the matrix then adds a new piece to the board
