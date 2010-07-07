@@ -7,7 +7,6 @@ Game
 
 Board
 	Knows the position of each dead piece, as well as holds the current piece. Handles all x,y coords. 
-	TODO: Collision. This is the big one right now.
 
 Piece
 	Knows only what kind it is and its orientation. This part is basically done.

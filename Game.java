@@ -1,3 +1,5 @@
+import java.awt.Container;
+
 class Game implements Runnable {
 	private Board matrix;
 	
@@ -5,7 +7,8 @@ class Game implements Runnable {
 		// needs a board
 		matrix = new Board();
 		// TODO gravity timer
-		// TODO input
+		Container GUI = new Container();
+		GUI.addKeyListener(new InputListener(matrix));
 		// TODO scoreboard / thread that also handles lines.
 	}
 	

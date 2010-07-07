@@ -7,6 +7,7 @@ JC = javac
 CLASSES = \
 	Piece.java \
 	Board.java \
+	InputListener.java \
 	Game.java \
 	Tetris.java
 
