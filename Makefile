@@ -8,6 +8,7 @@ CLASSES = \
 	Piece.java \
 	Board.java \
 	InputListener.java \
+	Gui.java \
 	Game.java \
 	Tetris.java
 

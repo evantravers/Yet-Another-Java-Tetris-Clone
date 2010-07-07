@@ -1,5 +1,4 @@
 Board.java:185:		// TODO implement this graphically
-Board.java:201:		// TODO What's 'refresh()' supposed to do?	
-Game.java:7:		// TODO gravity timer
-Game.java:8:		// TODO input
-Game.java:9:		// TODO scoreboard / thread that also handles lines.
+Board.java:201:	// TODO What's 'refresh()' supposed to do?	
+Game.java:9:		// TODO gravity timer
+Game.java:12:		// TODO scoreboard / thread that also handles lines.

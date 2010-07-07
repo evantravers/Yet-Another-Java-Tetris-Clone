@@ -6,7 +6,7 @@ class Tetris {
 		System.out.println(tetrisLogo);
 		Game theGame = new Game();
 		Thread t = new Thread(theGame);
-		t.run();
+		t.start();
 	}
 	
 	// game

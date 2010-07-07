@@ -29,7 +29,7 @@ class Board {
 	*/
 	
 	
-	private String matrix[][];
+	private String[][] matrix;
 	
 	// the current bricks X coord
 	private int activeX;
@@ -42,6 +42,11 @@ class Board {
 		// make a new board with nothing on it.
 		matrix = new String[10][20];
 	}
+
+	public String[][] getMatrix()	{ return matrix; }
+	public int getActiveX()		{ return activeX; }
+	public int getActiveY()		{ return activeY; }
+	public Piece getActivePiece()	{ return active; }
 	
 	public void add(Piece p) {
 		// add the brick to the list
@@ -118,8 +123,8 @@ class Board {
 				if(pMatrix[x][y] == 1)
 				{
 					if(activeX + x + dx < 0			// Left Board Collision Detection
-					|| activeX + x + dx >= matrix[y].length  // Right Board Collision Detection
-					|| activeY + y + dy >= matrix.length
+					|| activeX + x + dx >= matrix.length // Right Board Collision Detection
+					|| activeY + y + dy >= matrix[y].length// Floor Board Collision Detection
 					|| matrix[activeX + x + dx][activeY + y + dy] != null) //Piece Collision Detection
 					{
 						collision = true;
