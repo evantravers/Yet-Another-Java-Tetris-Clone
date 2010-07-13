@@ -59,7 +59,7 @@ class Board {
 	public void add() {
 		// position it at the top middle of the frame
 		active = new Piece();
-		activeX=2;
+		activeX=0;
 		activeY=0;
 	}
 	
@@ -67,10 +67,10 @@ class Board {
 
 		ArrayList<Integer> rowsToClear = new ArrayList<Integer>();
 
-		for(int y = 0; y < matrix.length; y++)
+		for(int y = 0; y < matrix[0].length; y++)
 		{
 			boolean clearQ = true;
-			for(int x = 0; x < matrix[y].length; x++)
+			for(int x = 0; x < matrix.length; x++)
 			{
 				if(matrix[x][y] == null)
 					clearQ = false;
@@ -81,8 +81,6 @@ class Board {
 
 		if(rowsToClear.size() != 0)
 			clearRows(rowsToClear);
-		else
-			System.out.println("none here boss");
 	}
 
 	public void clearRows(ArrayList<Integer> rows) {
@@ -116,9 +114,9 @@ class Board {
 		int[][] pMatrix = p.getPoints();
 		
 		boolean collision = false;
-		for(int y = 0; y < pMatrix.length; y++)
+		for(int y = 0; y < pMatrix[0].length; y++)
 		{
-			for(int x = 0; x < pMatrix[y].length; x++)
+			for(int x = 0; x < pMatrix.length; x++)
 			{
 				if(pMatrix[x][y] == 1)
 				{
@@ -127,6 +125,13 @@ class Board {
 					|| activeY + y + dy >= matrix[y].length// Floor Board Collision Detection
 					|| matrix[activeX + x + dx][activeY + y + dy] != null) //Piece Collision Detection
 					{
+						System.out.println("**Collision**" +
+								"\nactiveX = " + activeX + "\tx = " + x + "\tdx = " + dx +
+								"\nactiveY = " + activeY + "\ty = " + y + "\tdy = " + dy +				
+								"\nactiveX + x + dx = " + (activeX + x + dx) +
+								"\nactiveY + y + dy = " + (activeY + y + dy) +
+								"\nmatrix.length = " + matrix.length + 
+								"\nmatrix[y].length = " + matrix[y].length);
 						collision = true;
 					}
 				}
@@ -170,9 +175,9 @@ class Board {
         public void lockPiece() {
                 // Locks the piece to the matrix then adds a new piece to the board
                 int[][] pMatrix = active.getPoints();
-                for(int y = 0; y < pMatrix.length; y++)
+                for(int x = 0; x < pMatrix[0].length; x++)
                 {
-                        for(int x = 0; x < pMatrix[y].length; x++)
+                        for(int y = 0; y < pMatrix.length; y++)
                         {
                                 if(pMatrix[x][y] == 1)
                                 {
@@ -181,7 +186,8 @@ class Board {
                         }
                 }
 
-                this.add();
+		this.add();
+		this.checkRows();
         }
 
 		

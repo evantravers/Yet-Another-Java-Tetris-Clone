@@ -1,7 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class Gui extends JPanel {
+public class Gui extends JPanel{
 
 	private Board gameBoard;
 	private int width;
@@ -19,7 +20,6 @@ public class Gui extends JPanel {
 		gameBoard = b;
 		setPreferredSize(new Dimension(width, height));
 	}
-
 
 	public void paintComponent(Graphics g) {
 
@@ -40,12 +40,12 @@ public class Gui extends JPanel {
 	public void drawGrid(Graphics2D g) {
 		
 		// Vertical
-		for(int i = 0; i < x; i++)
-			g.drawLine(bW + i * bW, bW, bW + i * bW, y * bW);
+		for(int i = 1; i <= x; i++)
+			g.drawLine(i * bW, bW, i * bW, y * bW);
 
 		// Horizontal
-		for(int i = 0; i < y; i++)
-			g.drawLine(bW, bW + i * bW, x * bW, bW + i * bW);
+		for(int i = 1; i <= y; i++)
+			g.drawLine(bW, i * bW, x * bW, i * bW);
 	}
 
 	public void drawActivePiece(Graphics2D g) {
@@ -62,7 +62,7 @@ public class Gui extends JPanel {
 			{
 				if(pMatrix[x][y] == 1)
 				{
-					g.fillRect((ax+x)*bW, (ay+y)*bW, bW, bW);
+					g.fillRect((ax+x)*bW + bW, (ay+y)*bW + bW, bW, bW);
 				}
 			}
 		}		
@@ -79,7 +79,7 @@ public class Gui extends JPanel {
 				if(matrix[x][y] != null)
 				{	
 					typeColor(matrix[x][y],g);
-					g.fillRect(x*bW, y*bW, bW, bW);
+					g.fillRect(x*bW + bW, y*bW + bW, bW, bW);
 				}
 			}
 		}

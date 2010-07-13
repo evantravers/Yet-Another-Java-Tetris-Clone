@@ -15,12 +15,16 @@ class Game implements Runnable {
 		gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container content = gameFrame.getContentPane();
 		content.add(gui);
-		
+
+		// Gravity Timer
+		Thread gt = new Thread(new GravityTimer(gameBoard));
+		gt.start();
+
 		// Input Listener Setup
 		InputListener l = new InputListener(gameBoard);
 		Thread lt = new Thread(l);
 		lt.start();
-		content.addKeyListener(l);
+		gameFrame.addKeyListener(l);
 
 		gameFrame.pack();
 		gameFrame.setVisible(true);
@@ -34,9 +38,6 @@ class Game implements Runnable {
 		gameBoard.add();
 		while (true) {
 
-			gameBoard.gravity();
-			// Simulated Gravity timer for testing purposes
-			try{ Thread.sleep(250); }catch(InterruptedException e) { }
 			gui.repaint();
 			Thread.yield();
 			// breakpoint

@@ -9,6 +9,7 @@ CLASSES = \
 	Board.java \
 	InputListener.java \
 	Gui.java \
+	GravityTimer.java \
 	Game.java \
 	Tetris.java
 

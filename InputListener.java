@@ -1,7 +1,7 @@
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 
-public class InputListener implements Runnable, KeyListener {
+public class InputListener implements KeyListener, Runnable {
 
 	private Board GB;
 	private int k;
@@ -11,6 +11,7 @@ public class InputListener implements Runnable, KeyListener {
 		GB = b;
 	}
 
+	
 	public void run() {
 	
 		while(true)
@@ -22,6 +23,8 @@ public class InputListener implements Runnable, KeyListener {
 				case KeyEvent.VK_LEFT : GB.left(); break;
 				case KeyEvent.VK_RIGHT : GB.right(); break;
 			}
+			k = -1;
+			Thread.yield();
 		}
 	}
 
@@ -31,11 +34,18 @@ public class InputListener implements Runnable, KeyListener {
 
 	public void keyPressed(KeyEvent e) {
 
-		k = e.KEY_PRESSED;
+	/*	switch (e.getKeyCode())
+		{
+			case KeyEvent.VK_UP : GB.rotate(); break;
+			case KeyEvent.VK_DOWN : GB.gravity(); break;
+			case KeyEvent.VK_LEFT : GB.left(); break;
+			case KeyEvent.VK_RIGHT : GB.right(); break;
+		}*/
+
+		k = e.getKeyCode();
 	}
 
 	public void keyReleased(KeyEvent e) {
-
-		k = -1;
+		//not used
 	}
 }
