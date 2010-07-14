@@ -87,7 +87,7 @@ class Board {
 		// Clears necessary rows
 		for(int r : rows)
 		{	
-			for(int x = 0; x < matrix[r].length; x++)
+			for(int x = 0; x < matrix.length; x++)
 			{
 				matrix[x][r] = null;
 			}	
@@ -101,7 +101,7 @@ class Board {
 		{
 			for(int y = r; y > 0; y--)
 			{
-				for(int x = 0; x < matrix[y].length; x++)
+				for(int x = 0; x < matrix.length; x++)
 				{
 					matrix[x][y] = matrix[x][y-1];
 				}
@@ -125,13 +125,6 @@ class Board {
 					|| activeY + y + dy >= matrix[y].length// Floor Board Collision Detection
 					|| matrix[activeX + x + dx][activeY + y + dy] != null) //Piece Collision Detection
 					{
-						System.out.println("**Collision**" +
-								"\nactiveX = " + activeX + "\tx = " + x + "\tdx = " + dx +
-								"\nactiveY = " + activeY + "\ty = " + y + "\tdy = " + dy +				
-								"\nactiveX + x + dx = " + (activeX + x + dx) +
-								"\nactiveY + y + dy = " + (activeY + y + dy) +
-								"\nmatrix.length = " + matrix.length + 
-								"\nmatrix[y].length = " + matrix[y].length);
 						collision = true;
 					}
 				}

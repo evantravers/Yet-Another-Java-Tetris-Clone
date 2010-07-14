@@ -1,3 +1,4 @@
+//TODO Make the game faster
 Board.java:185:		// TODO implement this graphically
 Board.java:201:	// TODO What's 'refresh()' supposed to do?	
 Game.java:9:		// TODO gravity timer

@@ -38,6 +38,7 @@ class Game implements Runnable {
 		gameBoard.add();
 		while (true) {
 
+			try { Thread.sleep(34); } catch(InterruptedException e) { }
 			gui.repaint();
 			Thread.yield();
 			// breakpoint
